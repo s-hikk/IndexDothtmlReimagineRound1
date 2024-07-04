@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'dune'; /* Name you want to use for the font */
+  src: url('./megtron.otf') format('truetype'); 
+}
+
+.home {
+  height: 100vh;
+  background: url('../b.jpg') no-repeat center center/cover;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center; 
+  white-space: ;
+  padding: 2rem; 
+}
+  .overlay {
+    background: rgba(0, 0, 0, 0);
+    padding: 2rem;
+  }
+  .spacing-text {
+    margin-top: 40px;
+  }
+
+  .slide-in {
+    color: white;
+    padding: 8px;
+    font-family: dune;
+    font-weight: 300;
+    text-align: left;
+    font-size: 5rem;
+    animation: slide-in 1s ease-out forwards;
+    margin: 0;
+    opacity: 0; 
+
+  }
+  .slide-in:hover {
+    text-shadow: 
+      0 0 4px #fff, /* Inner white glow */
+      0 0 8px #007bff, /* Outer blue glow */
+      0 0 12px #007bff; /* Larger outer blue glow */
+  }
+  .delay-1 {
+ 
+    animation-delay: 0.44s;
+  }
+  
+  .delay-2 {
+    animation-delay: 0.88s;
+  }
+
+  
+  @keyframes slide-in {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  

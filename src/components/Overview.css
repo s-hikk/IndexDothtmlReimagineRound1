@@ -1,0 +1,70 @@
+/* src/Overview.css */
+@font-face {
+    font-family: 'dune'; /* Name you want to use for the font */
+    src: url('./megtron.otf') format('truetype'); 
+  }
+
+
+  .slide-ink {
+    color: white;
+    padding: 8px;
+    font-family: dune;
+    font-weight: 300;
+    text-align: left;
+    margin-left:15px;
+    font-size: 5rem;
+    animation: slide-in 1s ease-out forwards;
+    margin-bottom: 100px;
+    opacity: 0;
+  }
+  
+  .delay-1 {
+    animation-delay: 0.44s;
+  }
+  
+  .delay-2 {
+    animation-delay: 0.88s;
+  }
+  
+  @keyframes slide-ink {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+.overview-container {
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .overview-title {
+    text-align: flex-start;
+    font-size: 3em;
+    margin-bottom: 20px;
+    font-family: dune;
+    color: white;
+  }
+  
+  .overview-content {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .overview-description {
+    flex: 1;
+    margin-right: 20px;
+    color: white;
+    text-align: left;
+  }
+  
+  .overview-image {
+    width: auto;
+    height: 300px;
+    object-fit: cover;
+  }
+  
