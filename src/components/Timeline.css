@@ -73,9 +73,9 @@ body {
     }
   }
   main {
-    min-width: 300px;
-    max-width: 800px;
-    margin-left: 50px;
+    min-width: 23%;
+    max-width: 73%;
+    margin-left: 7%;
   }
   
   .kal {

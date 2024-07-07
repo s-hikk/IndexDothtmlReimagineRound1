@@ -1,30 +1,24 @@
 import React, { useState } from 'react';
 import './LaunchServices.css';
+import Modal from '@mui/material/Modal';
 
 const services = [
-  { title: 'VIKRAM S', description: 'Description 1', image: 'https://skyroot.in/images/Vikram-S.png' },
-  { title: 'VIKRAM I', description: 'The Vikram-I, first rocket in the series, has three solid fuel-powered stages each with a burn time ranging between 80 and 100 seconds and the final stage is Raman engine (Sanskrit, lit. "enchanting", Namesake: C.V. Raman). The Raman engine is powered by MMH and NTO liquid fuels in a cluster of four engines that generate 3.4 kN thrust. These Raman Engines will be used to do final adjustments in the orbit of the stage.[4] Vikram-I is designed to lift 290 kg to a 500 km Sun synchronous polar orbit (SSPO) and 480 kg to 45º inclination in a 500 km low Earth orbit (LEO).', image: 'https://skyroot.in/images/vikram1.png' },
-  { title: 'VIKRAM II', description: 'Description 2', image: 'https://skyroot.in/images/vikram2.png' },
-  { title: 'VIKRAM III', description: 'Description 2', image: 'https://skyroot.in/images/vikram3.png' },
+  { title: 'VIKRAM S', description: 'The Vikram-S, first rocket in the  s series, has three solid fuel-powered stages each with a burn time ranging between 80 and 100 seconds and the final stage is Raman engine (Sanskrit, lit. "enchanting", Namesake: C.V. Raman). ', image: 'https://skyroot.in/images/Vikram-S.png' },
+  { title: 'VIKRAM I', description: 'The Vikram-I, first rocket in the series, has three solid fuel-powered stages each with a burn time ranging between 80 and 100 seconds and the final stage is Raman engine (Sanskrit, lit. "enchanting", Namesake: C.V. Raman). ', image: 'https://skyroot.in/images/vikram1.png' },
+  { title: 'VIKRAM II', description: 'The Vikram-II, Second rocket in the series, has three solid fuel-powered stages each with a burn time ranging between 80 and 100 seconds and the final stage is Raman engine (Sanskrit, lit. "enchanting", Namesake: C.V. Raman). ', image: 'https://skyroot.in/images/vikram2.png' },
+  { title: 'VIKRAM III', description: 'The Vikram-III, Third rocket in the series, has three solid fuel-powered stages each with a burn time ranging between 80 and 100 seconds and the final stage is Raman engine (Sanskrit, lit. "enchanting", Namesake: C.V. Raman). ', image: 'https://skyroot.in/images/vikram3.png' },
   // Add more services as needed
 ];
 
 const LaunchServices = () => {
-  const [expandedTile, setExpandedTile] = useState(null);
+  const [selected, setSelected] = useState();
+  const [open, setOpen] = useState(false);
 
-  const handleClick = (index) => {
-    if (expandedTile === index) {
-      setExpandedTile(null);
-    } else {
-      setExpandedTile(index);
-    }
-  };
+  const handleClose = () => {
+    setSelected(null);
+    setOpen(false);
+  }
 
-  const handleOutsideClick = (e) => {
-    if (e.target.classList.contains('expanded')) {
-      setExpandedTile(null);
-    }
-  };
 
   return (
     <section className="launch-services" id="launch-services">
@@ -32,11 +26,9 @@ const LaunchServices = () => {
       <div className="services-grid">
         {services.map((service, index) => (
           <div
-            className={`service-tile ${expandedTile === index ? 'expanded' : ''}`}
+            className={`service-tile`}
             key={index}
-            style={{ animationDelay: `${index * 0.1}s` }}
-            onClick={() => handleClick(index)}
-            onBlur={handleOutsideClick}
+            onClick={() => { setSelected(service); setOpen(true) }}
           >
             <img src={service.image} alt={service.title} />
             <h3>{service.title}</h3>
@@ -47,7 +39,32 @@ const LaunchServices = () => {
           </div>
         ))}
       </div>
+      {open && <Modal
+        open={open}
+        onClose={handleClose}
+      >
+        <div  style={{  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  backgroundColor: '#222222',
+  color:"white",
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+display:"flex",
+borderRadius:"5%",
+flexDirection:"column",
+alignItems:"center"}}
+        >
+          <img src={selected.image} alt={selected.title} style={{height:"30%",width:"30%"}}/>
+         <h3>{selected.title}</h3>
+          <p style={{padding:5}}>{selected.description}</p>
+        </div>
+      </Modal>}
     </section>
+
   );
 };
 
